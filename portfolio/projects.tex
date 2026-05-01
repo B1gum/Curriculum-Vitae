@@ -16,6 +16,26 @@
 \projectseparator
 
 \projectentry
+  {Audio-Reactive TV Backlight}
+  {Analog LED-control circuit driven by a TV audio signal}
+  {Electromagnetism capstone project}
+  {BSc project, 2026}
+  {\portfoliotag{Analog electronics} \portfoliotag{Circuitry} \portfoliotag{Falstad} \portfoliotag{KiCad}}
+  {\leddriverfigure}
+  {This project involved designing an analog circuit that converts a TV audio signal into brightness control for a standard LED strip. The circuit takes stereo RCA/AUX audio, converts it to mono, removes DC offset, amplifies the signal, smooths it, and uses it to regulate LED current.
+
+  \begin{projectbullets}
+    \item Structured the circuit into clear sub-stages: stereo-to-mono input, AC coupling, LM358 amplification, low-pass filtering, and MOSFET-based LED current control.
+    \item Added adjustable gain to compensate for different audio-source levels, with the non-inverting amplifier designed for approximately \(3.1\)--\(24.4\) gain.
+    \item Used a low-pass filter with an effective cutoff around \(148\,\mathrm{Hz}\) to reduce excessive flicker and produce smoother light response.
+    \item Simulated and tuned the design in Falstad before physical testing and presentation.
+  \end{projectbullets}}
+
+\projectseparator
+
+\clearpage
+
+\projectentry
   {Game of Throws Launch Mechanism}
   {Spring-powered mechanical launcher for squash-ball competition}
   {Design \& Construction course project}
@@ -33,23 +53,6 @@
 
 \projectseparator
 
-\projectentry
-  {Audio-Reactive TV Backlight}
-  {Analog LED-control circuit driven by a TV audio signal}
-  {Electromagnetism capstone project}
-  {BSc project, 2026}
-  {\portfoliotag{Analog electronics} \portfoliotag{Circuitry} \portfoliotag{Falstad} \portfoliotag{KiCad}}
-  {\leddriverfigure}
-  {This project involved designing an analog circuit that converts a TV audio signal into brightness control for a standard LED strip. The circuit takes stereo RCA/AUX audio, converts it to mono, removes DC offset, amplifies the signal, smooths it, and uses it to regulate LED current.
-
-  \begin{projectbullets}
-    \item Structured the circuit into clear sub-stages: stereo-to-mono input, AC coupling, LM358 amplification, low-pass filtering, and MOSFET-based LED current control.
-    \item Added adjustable gain to compensate for different audio-source levels, with the non-inverting amplifier designed for approximately \(3.1\)--\(24.4\) gain.
-    \item Used a low-pass filter with an effective cutoff around \(148\,\mathrm{Hz}\) to reduce excessive flicker and produce smoother light response.
-    \item Simulated and tuned the design in Falstad before physical testing and presentation.
-  \end{projectbullets}}
-
-\projectseparator
 
 \projectentry
   {DC Motor Flap Control System}
@@ -82,3 +85,5 @@
     \item Used KiCad and ngspice to inspect operating points, transient behaviour, and tone-shaping before moving to hardware.
     \item Considered buildability throughout, including grounding, test points, wiring, and debugging access on perfboard or vero.
   \end{projectbullets}}
+
+  \projectseparator

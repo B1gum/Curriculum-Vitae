@@ -14,10 +14,12 @@
 \begin{minipage}[t]{\sidewidth}
   \vspace{0pt}
   \colorbox{CVSidebar}{%
-  \begin{minipage}[t][23.00cm][t]{\dimexpr\sidewidth-2\fboxsep\relax}
-    \RaggedRight
-    \small
-
+  \begin{minipage}[t][22.50cm][t]{\dimexpr\sidewidth-2\fboxsep\relax} %length
+  \vspace{-10pt} %top space
+  \hspace{3mm}% %padding left
+  \begin{minipage}[t]{\dimexpr\linewidth-6mm\relax} %padding right
+    \RaggedRight %left-aligned
+    \small       %small font
     \sideheading{user}{Profile}
     Mechanical engineering student with a strong analytical mindset and experience with complex technical systems, reliability, structured problem-solving, technical documentation, data analysis, and troubleshooting. Comfortable working across hardware, software, and physical systems.
 
@@ -49,10 +51,12 @@
     \end{itemize}
 
     \sideheading{cogs}{Skills}
-    \sideitem{Technical}{Electromechanical troubleshooting, maintenance, fluid systems, safety/compliance}
-    \sideitem{Tools}{MS Office, Mathcad, LaTeX, Inkscape, AutoCAD}
-    \sideitem{Programming}{Python, MATLAB, scripting}
+    \sideitem{Technical}{Electromechanical troubleshooting, DC motors, gearboxes, drivetrains, pumps, sensors, maintenance}
+    \sideitem{Materials \& testing}{Four-point probe measurements, cryogenic handling, experimental data analysis}
+    \sideitem{Tools}{AutoCAD, Solidworks, EES, MDSolids, Mathcad, LaTeX, MS Office, Inkscape}
+    \sideitem{Programming}{Python, MATLAB, Lua, scripting}
     \sideitem{Languages}{Danish (native), English (C2), German (B1)}
+  \end{minipage}%
   \end{minipage}%
   }
 \end{minipage}%
@@ -62,16 +66,19 @@
   \RaggedRight
   \small
 
-  \begin{connectedsection}{briefcase}{12.00}{1.35,5.05,8.65}{Work Experience}
+  \begin{connectedsection}{briefcase}{14.20}{3,9,12.65}{Work Experience}
+    \vspace{-10pt}\par
     \workentry
       {Maintenance Assistant, LEGOLAND}
       {Dec. 2023 -- Dec. 2025}
       {Billund, Denmark}
       {
         \begin{itemize}
-          \item Executed preventive maintenance and repairs on traffic school systems, including motors, gearboxes, and braking mechanisms.
-          \item Maintained over 70 Miniland animations by diagnosing faults and implementing durable fixes under time constraints.
-          \item Worked across electromechanical subsystems ranging from small-scale drivetrains to pump systems and sensors.
+          \item Performed independent electromechanical troubleshooting and maintenance on 24 V mobility-scooter-based electric vehicles used in LEGOLAND’s traffic school.
+          \item Completed full overhaul/restoration work on approximately 18 traffic school cars, including DC motor refurbishment, brush replacement, gearbox servicing, brake/speeder adjustment, bushings, wheels, and fiberglass bodywork.
+          \item Maintained Miniland animations involving 12 V DC motors, gearboxes, charging wires, PCBs, sensors, batteries, drivetrain tolerances, belts, chain drives, pumps, and fuse boxes.
+          \item Diagnosed recurring failure on a controllable Femern Belt crane animation and developed a reset procedure; proposed a welded spool-guide modification that substantially reduced repeat faults on the crane and sister crane.
+          \item Supported daily operation of Miniland by monitoring faults, restarting systems, and ensuring mechanical/electrical attractions remained operational.
         \end{itemize}
       }
       {yes}
@@ -82,9 +89,9 @@
       {Billund, Denmark}
       {
         \begin{itemize}
-          \item Installed and dismantled seasonal light fixtures, ensuring electrical connections and mounting structures met safety guidelines.
-          \item Conducted inspections of technical rooms, bridges, ladders, cooling systems, fire extinguishers, and other critical park infrastructure.
-          \item Reported deviations clearly and followed up with relevant personnel to ensure timely corrective actions.
+          \item Inspected approximately 193 technical rooms and infrastructure areas using digital checklists, creating work orders directly when issues could not be resolved on site.
+          \item Supported safety and fire-compliance improvements by identifying deviations, following up on work orders, and helping ensure technical rooms met updated standards.
+          \item Installed and dismantled approximately 400 outdoor wash lights for seasonal Christmas lighting, with attention to weatherproof cable routing and prevention of water ingress.
         \end{itemize}
       }
       {yes}
@@ -95,28 +102,28 @@
       {Vejle, Denmark}
       {
         \begin{itemize}
-          \item Provided peer tutoring and supported problem-solving and clear communication across subjects.
-          \item Strengthened communication skills through adaptive explanations and feedback, both 1:1 and in small groups.
+          \item Provided peer tutoring as a part of the schools homework cafe.
         \end{itemize}
       }
       {}
   \end{connectedsection}
 
-  \vspace{-2pt}
+  \vspace{-10pt}
 
-  \begin{connectedlast}{flask}{Projects \& Research}
-    \projectentry{Tungsten --- author and maintainer}
-      {Open-source Neovim plugin enabling computational workflows inside LaTeX documents via Wolfram Engine and Python.}
-
-    \projectentry{Superconductors (YBCO) project}
-      {Performed four-point probe measurements through the critical temperature and analysed I--V data using Python.}
+  \begin{connectedcontinued}{flask}{8.1}{1.1,3.3,5.1,7.2}{Projects \& Research}
+    \vspace{-10pt}\par
+    \projectentry{YBCO superconductors project}
+      {Investigated high-temperature superconductivity through Meissner-effect and flux-pinning demonstrations, four-point probe measurements across the critical temperature, and Python-based plotting, curve fitting, and numerical analysis. Received grade 12.}
 
     \projectentry{Projekt Forskerspirer}
-      {Research project on doping semiconducting nanoparticles to tune plasmon resonance; received an honourable mention.}
+      {Developed an experimental research proposal on tuning the plasmon resonance frequency of semiconducting nanoparticles through charge-carrier-density control, involving doping, Raman scattering, and spectrophotometry. Received an honourable mention.}
 
-    \projectentry{DødsBo}
-      {Contributed to the design and iterative improvement of a competition vehicle; achieved a top-10 finish in Jutland.}
-  \end{connectedlast}
+    \projectentry{Tungsten --- author and maintainer}
+      {Developed an open-source Neovim plugin that parses LaTeX mathematics and evaluates expressions directly in LaTeX documents using computational backends. Demonstrates systems thinking, technical documentation, release management, and complex problem decomposition.}
+
+    \projectentry{DødsBo --- tractor-pulling vehicle}
+      {Co-owned and rebuilt a garden-pulling tractor for a 350 kg competition class, including AutoCAD-based part design, metal fabrication, anti-tip brackets, weight-holder assemblies, drivetrain modification, and practical testing.}
+  \end{connectedcontinued}
 \end{minipage}
 
 \begin{tikzpicture}[remember picture,overlay]

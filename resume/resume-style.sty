@@ -1,4 +1,3 @@
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{resume/resume-style}[2026/05/01 Resume styling]
 
@@ -26,15 +25,15 @@
 
 % ---------- Sidebar ----------
 \newcommand{\sideheading}[2]{%
-  \vspace{8pt}%
+  \vspace{15pt}% space above heading in sidebar
   \noindent\bigicon{#1}\hspace{6pt}%
   {\bfseries\color{CVBlue}\MakeUppercase{#2}}\par
-  \vspace{5pt}{\color{CVBlueRule}\rule{\linewidth}{0.45pt}}\vspace{5pt}%
+  \vspace{5pt}{\color{CVBlueRule}\rule{\linewidth}{0.45pt}}\vspace{2pt}%
 }
 
 \newlength{\skilllabelwidth}
 \newlength{\skillgapwidth}
-\setlength{\skilllabelwidth}{2.28cm}
+\setlength{\skilllabelwidth}{1.8cm}
 \setlength{\skillgapwidth}{0.18cm}
 
 \newcommand{\sideitem}[2]{%
@@ -70,6 +69,33 @@
   \end{tikzpicture}%
 }
 
+\newcommand{\timelineguttercontinued}[3]{%
+  \begin{tikzpicture}[x=1cm,y=1cm,baseline=(origin.base)]
+    \coordinate (origin) at (0,0);
+
+    \draw[CVBlue!65,line width=0.65pt,overlay] (0,0.72) -- (0,-#2);
+
+    \node at (0,0) {\bigicon{#1}};
+
+    \ifstrempty{#3}{}{%
+      \foreach \yy in {#3}{%
+        \fill[white,draw=CVMuted,line width=0.45pt] (0,-\yy) circle (1.45pt);
+      }%
+    }
+  \end{tikzpicture}%
+}
+
+\newenvironment{connectedcontinued}[4]{%
+  \noindent\begin{tabular}{@{}p{\timelinewidth}@{\hspace{0.20cm}}p{\dimexpr\mainwidth-\timelinewidth-0.20cm\relax}@{}}
+  \timelineguttercontinued{#1}{#2}{#3} &
+  \begin{minipage}[t]{\dimexpr\mainwidth-\timelinewidth-0.20cm\relax}
+  \sectionline{#4}
+}{%
+  \end{minipage}
+  \end{tabular}\par
+}
+
+
 \newcommand{\timelineend}[1]{%
   \begin{tikzpicture}[x=1cm,y=1cm,baseline=(origin.base)]
     \coordinate (origin) at (0,0);
@@ -100,9 +126,9 @@
 \newcommand{\workentry}[5]{%
   \begin{tabularx}{\linewidth}{@{}X r@{}}
     \textbf{#1} & \cvdate{#2}\\
-    \muted{\emph{#3}} &
+    \vspace{-5pt}\muted{\emph{#3}} &
   \end{tabularx}\vspace{-3pt}
-  #4
+  \vspace{5pt}#4
   \ifstrempty{#5}{}{%
     \vspace{3pt}{\color{CVDots}\dotfill}\vspace{4pt}%
   }%
