@@ -1,0 +1,129 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{portfolio/portfolio-style}[2026/05/01 Unified project portfolio styling]
+
+\RequirePackage{cv-style}
+
+\NewDocumentCommand{\portfoliotag}{m}{%
+  \tikz[baseline=(tag.base)]{%
+    \node[
+      anchor=base,
+      rounded corners=1pt,
+      draw=CVBlue!35,
+      fill=CVBlue!7,
+      inner xsep=4.2pt,
+      inner ysep=1.6pt,
+      font=\sffamily\bfseries\scriptsize,
+      text=AUblueDark
+    ] (tag) {#1};%
+  }%
+}
+
+\NewDocumentEnvironment{projectbullets}{}{% 
+  \begin{itemize}[leftmargin=2.1ex, topsep=1mm, itemsep=0.6mm]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{\textcolor{CVBlue}{\scriptsize\textbullet}}
+}{%
+  \end{itemize}%
+}
+
+\NewDocumentCommand{\projectimagebox}{m}{%
+  \begin{tikzpicture}
+    \node {#1};
+  \end{tikzpicture}%
+}
+
+\NewDocumentCommand{\portfoliolead}{m}{%
+  \begin{cvparagraph}
+  #1
+  \end{cvparagraph}
+}
+
+\NewDocumentCommand{\projectentry}{m m m m m m +m}{%
+  \vspace{0.8mm}%
+  \setlength\tabcolsep{0pt}%
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\dimexpr\textwidth-4.8cm\relax} R{4.8cm}}
+    \entrytitlestyle{#1} & \entrylocationstyle{#3} \\
+    \entrypositionstyle{#2} & \entrydatestyle{#4} \\
+  \end{tabular*}%
+  \vspace{0.8mm}%
+  \noindent\begin{tcolorbox}[
+    width=\textwidth,
+    colback=PortfolioSoft,
+    colframe=PortfolioSoft,
+    boxrule=0pt,
+    left=2.8mm,
+    right=2.8mm,
+    top=2.0mm,
+    bottom=1.6mm,
+    boxsep=0pt,
+    before skip=0pt,
+    after skip=0pt
+  ]
+    \begin{minipage}[t]{0.66\linewidth}
+      {\fontsize{9pt}{1.18em}\bodyfontlight\upshape\color{CVText}%
+        {#5\par}\vspace{1.8mm}%
+        #7%
+      }%
+    \end{minipage}%
+    \hfill%
+    \begin{minipage}[t]{0.27\linewidth}
+      \vspace{0pt}\raggedleft
+      #6
+    \end{minipage}%
+  \end{tcolorbox}%
+  \par\vspace{3.8mm}%
+}
+
+\NewDocumentCommand{\projectseparator}{}{% 
+  \vspace{-0.6mm}\noindent\textcolor{PortfolioLine}{\rule{\textwidth}{0.15pt}}\vspace{1.0mm}%
+}
+
+\newcommand{\tungstenfigure}{%
+\projectimagebox{%
+  \includegraphics[width=0.78\linewidth]{assets/tungsten_logo.png}%
+}}
+
+\newcommand{\catapultfigure}{%
+\projectimagebox{%
+  \includegraphics[width=0.78\linewidth]{assets/catapult}%
+}}
+
+\newcommand{\leddriverfigure}{%
+\projectimagebox{%
+  \includegraphics[width=0.78\linewidth]{assets/led}%
+}}
+
+\newcommand{\flapfigure}{%
+\projectimagebox{%
+\begin{tikzpicture}[x=0.55cm,y=0.55cm, line cap=round, line join=round]
+  \fill[PortfolioSoft] (0,0) rectangle (6.4,4.4);
+  \draw[CVBlue!55, line width=0.7pt, rounded corners=1.4pt] (0.2,0.2) rectangle (6.2,4.2);
+  \fill[CVBlue!10, rounded corners=1pt] (0.6,0.75) rectangle (2.05,1.75);
+  \draw[AUblueDark, line width=0.8pt] (0.75,1.25) circle (0.25);
+  \draw[AUblueDark, line width=0.8pt] (1.5,1.25) circle (0.25);
+  \draw[AUblueDark, line width=0.8pt] (2.1,1.25) -- (3.2,1.25);
+  \fill[PortfolioOrange!55] (3.25,0.8) -- (5.75,1.1) -- (5.95,1.55) -- (3.25,1.75) -- cycle;
+  \draw[AUblueDark, line width=0.9pt] (3.25,0.8) -- (5.75,1.1) -- (5.95,1.55) -- (3.25,1.75) -- cycle;
+  \draw[CVBlue, line width=0.75pt, -{Latex[length=2mm]}] (4.2,2.25) arc[start angle=80, end angle=25, radius=0.9];
+  \node[font=\scriptsize\bfseries\color{AUblueDark}] at (1.25,2.55) {DC motor};
+  \node[font=\scriptsize\bfseries\color{AUblueDark}] at (4.75,2.65) {flap};
+\end{tikzpicture}%
+}}
+
+\newcommand{\pedalfigure}{%
+\projectimagebox{%
+\begin{tikzpicture}[x=0.55cm,y=0.55cm, line cap=round, line join=round]
+  \fill[PortfolioSoft] (0,0) rectangle (6.4,4.4);
+  \draw[CVBlue!55, line width=0.7pt, rounded corners=1.4pt] (0.2,0.2) rectangle (6.2,4.2);
+  \foreach \x/\lab in {1.0/GAIN,2.4/TONE,3.8/VOL} {
+    \draw[AUblueDark, line width=0.8pt] (\x,3.1) circle (0.38);
+    \draw[AUblueDark, line width=0.8pt] (\x,3.1) -- ++(0.18,0.22);
+    \node[font=\tiny\bfseries\color{AUblueDark}] at (\x,2.45) {\lab};
+  }
+  \fill[PortfolioOrange!45, rounded corners=1pt] (0.85,0.65) rectangle (5.55,1.65);
+  \draw[AUblueDark, line width=0.8pt, rounded corners=1pt] (0.85,0.65) rectangle (5.55,1.65);
+  \foreach \x in {1.15,1.65,...,5.25}{\draw[CVBlue!70] (\x,0.75) -- (\x,1.55);}
+  \node[font=\scriptsize\bfseries\color{AUblueDark}] at (3.2,1.15) {gain / clipping / tone};
+\end{tikzpicture}%
+}}

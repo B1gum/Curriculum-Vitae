@@ -1,0 +1,114 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{resume/resume-style}[2026/05/01 Resume styling]
+
+\RequirePackage[top=0.72cm,bottom=0.78cm,left=0.92cm,right=0.92cm]{geometry}
+\RequirePackage{cv-style}
+
+% ---------- Page + typography ----------
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{0.94}
+\emergencystretch=2em
+
+% ---------- Layout ----------
+\newlength{\sidewidth}
+\newlength{\gapwidth}
+\newlength{\mainwidth}
+\newlength{\timelinewidth}
+\setlength{\sidewidth}{0.345\textwidth}
+\setlength{\gapwidth}{0.46cm}
+\setlength{\mainwidth}{\dimexpr\textwidth-\sidewidth-\gapwidth\relax}
+\setlength{\timelinewidth}{0.70cm}
+
+\newcommand{\resumeheader}{\cvdocumentheader[Mechanical Engineering Student]}
+
+% ---------- Sidebar ----------
+\newcommand{\sideheading}[2]{%
+  \vspace{8pt}%
+  \noindent\bigicon{#1}\hspace{6pt}%
+  {\bfseries\color{CVBlue}\MakeUppercase{#2}}\par
+  \vspace{5pt}{\color{CVBlueRule}\rule{\linewidth}{0.45pt}}\vspace{5pt}%
+}
+
+\newlength{\skilllabelwidth}
+\newlength{\skillgapwidth}
+\setlength{\skilllabelwidth}{2.28cm}
+\setlength{\skillgapwidth}{0.18cm}
+
+\newcommand{\sideitem}[2]{%
+  \noindent
+  \begin{minipage}[t]{\skilllabelwidth}
+    \vspace{0pt}\RaggedRight{\bfseries\footnotesize\color{CVBlue}#1}
+  \end{minipage}%
+  \hspace{\skillgapwidth}%
+  \begin{minipage}[t]{\dimexpr\linewidth-\skilllabelwidth-\skillgapwidth\relax}
+    \vspace{0pt}\RaggedRight{\footnotesize #2}
+  \end{minipage}\par\vspace{4pt}%
+}
+
+% ---------- Main timeline ----------
+\newcommand{\sectionline}[1]{%
+  \begin{tabularx}{\linewidth}{@{}l X@{}}
+    {\bfseries\large\color{CVNavy}\MakeUppercase{#1}} &
+    \raisebox{0.58ex}{\color{CVBlue}\rule{\linewidth}{0.75pt}}
+  \end{tabularx}
+  \vspace{7pt}
+}
+
+\newcommand{\timelinegutter}[3]{%
+  \begin{tikzpicture}[x=1cm,y=1cm,baseline=(origin.base)]
+    \coordinate (origin) at (0,0);
+    \draw[CVBlue!65,line width=0.65pt] (0,-0.44) -- (0,-#2);
+    \node at (0,0) {\bigicon{#1}};
+    \ifstrempty{#3}{}{%
+      \foreach \yy in {#3}{%
+        \fill[white,draw=CVMuted,line width=0.45pt] (0,-\yy) circle (1.45pt);
+      }%
+    }
+  \end{tikzpicture}%
+}
+
+\newcommand{\timelineend}[1]{%
+  \begin{tikzpicture}[x=1cm,y=1cm,baseline=(origin.base)]
+    \coordinate (origin) at (0,0);
+    \node at (0,0) {\bigicon{#1}};
+  \end{tikzpicture}%
+}
+
+\newenvironment{connectedsection}[4]{%
+  \noindent\begin{tabular}{@{}p{\timelinewidth}@{\hspace{0.20cm}}p{\dimexpr\mainwidth-\timelinewidth-0.20cm\relax}@{}}
+  \timelinegutter{#1}{#2}{#3} &
+  \begin{minipage}[t]{\dimexpr\mainwidth-\timelinewidth-0.20cm\relax}
+  \sectionline{#4}
+}{%
+  \end{minipage}
+  \end{tabular}\par
+}
+
+\newenvironment{connectedlast}[2]{%
+  \noindent\begin{tabular}{@{}p{\timelinewidth}@{\hspace{0.20cm}}p{\dimexpr\mainwidth-\timelinewidth-0.20cm\relax}@{}}
+  \timelineend{#1} &
+  \begin{minipage}[t]{\dimexpr\mainwidth-\timelinewidth-0.20cm\relax}
+  \sectionline{#2}
+}{%
+  \end{minipage}
+  \end{tabular}\par
+}
+
+\newcommand{\workentry}[5]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \cvdate{#2}\\
+    \muted{\emph{#3}} &
+  \end{tabularx}\vspace{-3pt}
+  #4
+  \ifstrempty{#5}{}{%
+    \vspace{3pt}{\color{CVDots}\dotfill}\vspace{4pt}%
+  }%
+}
+
+\newcommand{\projectentry}[2]{%
+  \textbf{#1}\par
+  \vspace{1pt}{\small #2}\par\vspace{5pt}
+}

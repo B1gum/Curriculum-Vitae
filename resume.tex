@@ -1,0 +1,129 @@
+
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{resume/resume-style}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\resumeheader
+
+\noindent
+\begin{minipage}[t]{\sidewidth}
+  \vspace{0pt}
+  \colorbox{CVSidebar}{%
+  \begin{minipage}[t][23.00cm][t]{\dimexpr\sidewidth-2\fboxsep\relax}
+    \RaggedRight
+    \small
+
+    \sideheading{user}{Profile}
+    Mechanical engineering student with a strong analytical mindset and experience with complex technical systems, reliability, structured problem-solving, technical documentation, data analysis, and troubleshooting. Comfortable working across hardware, software, and physical systems.
+
+    \sideheading{graduation-cap}{Education}
+    \textbf{BSc in Engineering\\(Mechanical Engineering)}\par
+    Aarhus University\par
+    \muted{Aarhus, Denmark}\hfill\cvdate{Aug. 2024 -- Present}\par
+    \begin{itemize}
+      \item Member of the Education Committee.
+      \item Provisional GPA: 10.5
+    \end{itemize}
+
+    \vspace{3pt}{\color{CVBlueRule}\rule{\linewidth}{0.4pt}}\vspace{5pt}
+
+    \textbf{HTX -- Mat A/Fys A}\par
+    Vejle Tekniske Gymnasium\par
+    \muted{Vejle, Denmark}\hfill\cvdate{Aug. 2020 -- Jun. 2023}\par
+    \begin{itemize}
+      \item Board member of the student council.
+      \item Highest average grade in the nation; weighted GPA: 12.6.
+    \end{itemize}
+
+    \sideheading{trophy}{Selected achievements}
+    \begin{itemize}
+      \item Highest weighted GPA in the nation (2023)
+      \item Danish Physics Olympiad national final qualification (2022)
+      \item Georg Mohr competition winner seminar attendee (2022)
+      \item Honourable mention, Projekt Forskerspirer (2022)
+    \end{itemize}
+
+    \sideheading{cogs}{Skills}
+    \sideitem{Technical}{Electromechanical troubleshooting, maintenance, fluid systems, safety/compliance}
+    \sideitem{Tools}{MS Office, Mathcad, LaTeX, Inkscape, AutoCAD}
+    \sideitem{Programming}{Python, MATLAB, scripting}
+    \sideitem{Languages}{Danish (native), English (C2), German (B1)}
+  \end{minipage}%
+  }
+\end{minipage}%
+\hspace{\gapwidth}%
+\begin{minipage}[t]{\mainwidth}
+  \vspace{0pt}
+  \RaggedRight
+  \small
+
+  \begin{connectedsection}{briefcase}{12.00}{1.35,5.05,8.65}{Work Experience}
+    \workentry
+      {Maintenance Assistant, LEGOLAND}
+      {Dec. 2023 -- Dec. 2025}
+      {Billund, Denmark}
+      {
+        \begin{itemize}
+          \item Executed preventive maintenance and repairs on traffic school systems, including motors, gearboxes, and braking mechanisms.
+          \item Maintained over 70 Miniland animations by diagnosing faults and implementing durable fixes under time constraints.
+          \item Worked across electromechanical subsystems ranging from small-scale drivetrains to pump systems and sensors.
+        \end{itemize}
+      }
+      {yes}
+
+    \workentry
+      {Facility Assistant, LEGOLAND}
+      {Jun. -- Dec. 2022 \& Aug. -- Dec. 2023}
+      {Billund, Denmark}
+      {
+        \begin{itemize}
+          \item Installed and dismantled seasonal light fixtures, ensuring electrical connections and mounting structures met safety guidelines.
+          \item Conducted inspections of technical rooms, bridges, ladders, cooling systems, fire extinguishers, and other critical park infrastructure.
+          \item Reported deviations clearly and followed up with relevant personnel to ensure timely corrective actions.
+        \end{itemize}
+      }
+      {yes}
+
+    \workentry
+      {Tutor, Syddansk Erhvervsskole}
+      {Aug. 2021 -- Jun. 2023}
+      {Vejle, Denmark}
+      {
+        \begin{itemize}
+          \item Provided peer tutoring and supported problem-solving and clear communication across subjects.
+          \item Strengthened communication skills through adaptive explanations and feedback, both 1:1 and in small groups.
+        \end{itemize}
+      }
+      {}
+  \end{connectedsection}
+
+  \vspace{-2pt}
+
+  \begin{connectedlast}{flask}{Projects \& Research}
+    \projectentry{Tungsten --- author and maintainer}
+      {Open-source Neovim plugin enabling computational workflows inside LaTeX documents via Wolfram Engine and Python.}
+
+    \projectentry{Superconductors (YBCO) project}
+      {Performed four-point probe measurements through the critical temperature and analysed I--V data using Python.}
+
+    \projectentry{Projekt Forskerspirer}
+      {Research project on doping semiconducting nanoparticles to tune plasmon resonance; received an honourable mention.}
+
+    \projectentry{DødsBo}
+      {Contributed to the design and iterative improvement of a competition vehicle; achieved a top-10 finish in Jutland.}
+  \end{connectedlast}
+\end{minipage}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=west,font=\footnotesize\color{CVMuted}]
+    at ([xshift=1.2cm,yshift=0.95cm]current page.south west) {\today};
+  \node[anchor=east,font=\footnotesize\color{CVMuted}]
+    at ([xshift=-1.2cm,yshift=0.95cm]current page.south east) {Noah Rahbek Bigum Hansen~~~·~~~Curriculum Vitae};
+\end{tikzpicture}
+
+\end{document}

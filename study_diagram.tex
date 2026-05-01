@@ -1,0 +1,46 @@
+
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = study_diagram.tex
+
+\documentclass[11pt,a4paper,landscape]{article}
+\usepackage[left=1.2cm,top=.8cm,right=1.2cm,bottom=1.30cm]{geometry}
+\usepackage[danish,english]{babel}
+\usepackage{cv-style}
+
+\newcommand{\StudyDiagramFooterLabel}{}
+\newcommand{\StudyDiagramMetaTitle}{}
+\newcommand{\StudyDiagramHeaderLeft}{}
+\newcommand{\StudyDiagramHeaderRight}{}
+\AtBeginDocument{%
+  \selectlanguage{danish}%
+  \iflanguage{danish}{%
+    \gdef\StudyDiagramFooterLabel{studiediagram}%
+    \gdef\StudyDiagramMetaTitle{Studiediagram}%
+    \gdef\StudyDiagramHeaderLeft{STUDIE}%
+    \gdef\StudyDiagramHeaderRight{DIAGRAM \textbullet{} MEKANIK}%
+  }{%
+    \gdef\StudyDiagramFooterLabel{study diagram}%
+    \gdef\StudyDiagramMetaTitle{Study Diagram}%
+    \gdef\StudyDiagramHeaderLeft{STUDY}%
+    \gdef\StudyDiagramHeaderRight{DIAGRAM \textbullet{} MECHANICAL ENGINEERING}%
+  }%
+}
+
+\usepackage{study_diagram/study-diagram}
+
+\hypersetup{%
+  pdftitle={\StudyDiagramMetaTitle},
+  pdfauthor={Noah Rahbek Bigum Hansen},
+  pdfsubject={\StudyDiagramText{Personligt studiediagram for mekanik}{Personalised mechanical engineering study diagram}},
+  pdfkeywords={study plan, mechanical engineering, Aarhus University}
+}
+
+\begin{document}
+\pagenumbering{gobble}
+\centering
+\input{study_diagram/mechanics_courses.tex}
+
+\cvfooter{\today}{Noah Rahbek Bigum Hansen~~~·~~~\StudyDiagramFooterLabel}
+
+\end{document}

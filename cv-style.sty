@@ -1,0 +1,223 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cv-style}[2026/05/01 Unified CV visual identity]
+
+% ---------- Shared packages ----------
+\RequirePackage{xparse}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{enumitem}
+\RequirePackage{calc}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{ragged2e}
+\RequirePackage{etoolbox}
+\RequirePackage{fontawesome5}
+\RequirePackage[most]{tcolorbox}
+\usetikzlibrary{calc,arrows.meta,positioning,patterns,shapes.geometric}
+
+% ---------- Font + shared colours ----------
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[scaled=0.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{AUblue}{RGB}{0,61,115}
+\definecolor{AUblueDark}{RGB}{0,37,70}
+\definecolor{PortfolioLine}{RGB}{0,61,115}
+\definecolor{PortfolioSoft}{RGB}{245,248,250}
+\definecolor{PortfolioText}{RGB}{74,74,74}
+\definecolor{PortfolioMuted}{RGB}{119,119,119}
+\definecolor{PortfolioGreen}{RGB}{126,160,109}
+\definecolor{PortfolioYellow}{RGB}{212,178,94}
+\definecolor{PortfolioPurple}{RGB}{155,88,155}
+\definecolor{PortfolioOrange}{RGB}{209,136,180}
+\definecolor{PortfolioRed}{RGB}{201,106,106}
+\definecolor{PortfolioTeal}{RGB}{77,154,154}
+\definecolor{ResumeDots}{RGB}{215,228,242}
+
+\colorlet{awesome}{AUblue}
+\colorlet{text}{PortfolioText}
+\colorlet{darktext}{PortfolioText}
+\colorlet{graytext}{PortfolioMuted}
+\colorlet{lighttext}{PortfolioMuted}
+\colorlet{CVNavy}{AUblueDark}
+\colorlet{CVBlue}{AUblue}
+\colorlet{CVBlueRule}{AUblue!24}
+\colorlet{CVText}{PortfolioText}
+\colorlet{CVMuted}{PortfolioMuted}
+\colorlet{CVDots}{ResumeDots}
+\colorlet{CVSidebar}{PortfolioSoft}
+
+\color{CVText}
+
+% ---------- Typography ----------
+\providecommand*{\headerfont}{\sffamily}
+\providecommand*{\headerfontlight}{\sffamily}
+\providecommand*{\bodyfont}{\rmfamily}
+\providecommand*{\bodyfontlight}{\rmfamily}
+\newcommand{\entrytitlestyle}[1]{{\bfseries\color{CVText}#1}}
+\newcommand{\entrypositionstyle}[1]{{\itshape\color{CVMuted}#1}}
+\newcommand{\entrydatestyle}[1]{{\itshape\color{CVBlue}#1}}
+\newcommand{\entrylocationstyle}[1]{{\color{CVMuted}#1}}
+
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+
+\setlist[itemize]{
+  leftmargin=1.05em,
+  label=\textcolor{CVBlue}{\raisebox{0.15ex}{\scriptsize$\bullet$}},
+  itemsep=1.1pt,
+  topsep=2pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+% ---------- Shared icon helpers ----------
+\newcommand{\roundicon}[2][1.0]{%
+  \begin{tikzpicture}[baseline=-0.55ex,scale=#1]
+    \node[
+      fill=CVBlue,
+      text=white,
+      circle,
+      minimum size=1.70em,
+      inner sep=0pt,
+      font=\scriptsize
+    ] {\faIcon{#2}};
+  \end{tikzpicture}%
+}
+\newcommand{\smallicon}[1]{\roundicon[0.62]{#1}}
+\newcommand{\bigicon}[1]{\roundicon[1.10]{#1}}
+\newcommand{\cvdate}[1]{{\color{CVBlue}\itshape #1}}
+\newcommand{\muted}[1]{{\color{CVMuted}#1}}
+
+% ---------- Shared page primitives ----------
+\newcommand{\contacticon}[1]{\roundicon[0.53]{#1}}
+\newcommand{\contactitem}[2]{%
+  \mbox{\contacticon{#1}\hspace{2.4pt}{\fontsize{8.15}{9.35}\selectfont #2}}%
+}
+\newcommand{\contactsep}{\hfill}
+\newcommand{\cvcontactdetails}{%
+  \noindent\makebox[\linewidth][l]{%
+    \contactitem{map-marker-alt}{Aarhus / Risskov, Denmark}%
+    \contactsep
+    \contactitem{phone}{(+45) 61 45 23 42}%
+    \contactsep
+    \contactitem{envelope}{\href{mailto:noahrahbighansen@gmail.com}{noahrahbighansen@gmail.com}}%
+    \contactsep
+    \contactitem{github}{\href{https://github.com/B1gum}{B1gum}}%
+    \contactsep
+    \contactitem{linkedin}{\href{https://www.linkedin.com/in/noahrbhansen}{noahrbhansen}}%
+  }%
+}
+
+\NewDocumentCommand{\cvdocumentheader}{O{Mechanical Engineering Student} O{assets/photo.png}}{%
+  \vspace*{0.08cm}
+  \noindent
+  \begin{minipage}[t]{3.05cm}
+    \vspace{0pt}
+    \begin{tikzpicture}
+      \clip[rounded corners=7pt] (0,0) rectangle (2.75,2.75);
+      \node[inner sep=0pt,anchor=south west] at (0,0)
+        {\includegraphics[width=2.75cm,height=2.75cm]{#2}};
+      \draw[PortfolioLine!18,line width=0.75pt,rounded corners=7pt] (0,0) rectangle (2.75,2.75);
+    \end{tikzpicture}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{\dimexpr\textwidth-3.35cm\relax}
+    \vspace{0.08cm}
+    {\fontsize{28}{31}\selectfont\bfseries\color{CVNavy} Noah R. B. Hansen}\par
+    \vspace{1pt}
+    {\fontsize{10.5}{12}\selectfont\bfseries\color{CVBlue}\MakeUppercase{#1}}\par
+    \vspace{3pt}{\color{CVBlue}\rule{1.06cm}{1.45pt}}\par
+  \end{minipage}
+  \par\vspace{3pt}
+  \noindent\cvcontactdetails\par
+  \vspace{0.24cm}
+}
+
+
+\NewDocumentCommand{\cvdocumentheaderplain}{O{Mechanical Engineering Student}}{%
+  \vspace*{0.10cm}
+  \noindent
+  \begin{minipage}[t]{\textwidth}
+    \vspace{0.08cm}
+    {\fontsize{28}{31}\selectfont\bfseries\color{CVNavy} Noah R. B. Hansen}\par
+    \vspace{1pt}
+    {\fontsize{10.5}{12}\selectfont\bfseries\color{CVBlue}\MakeUppercase{#1}}\par
+    \vspace{3pt}{\color{CVBlue}\rule{1.06cm}{1.45pt}}\par
+    \vspace{7pt}
+    \cvcontactdetails\par
+  \end{minipage}
+  \vspace{0.32cm}
+}
+
+\NewDocumentCommand{\cvcompactheader}{m O{Mechanical Engineering}}{%
+  \noindent
+  {\fontsize{22}{25}\selectfont\bfseries\color{CVNavy} Noah R. B. Hansen}\par
+  \vspace{1pt}
+  {\fontsize{9.5}{11}\selectfont\bfseries\color{CVBlue}\MakeUppercase{#1 {\enskip\cdotp\enskip} #2}}\par
+  \vspace{3pt}{\color{CVBlue}\rule{1.0cm}{1.25pt}}\par
+  \vspace{4pt}
+}
+
+\newcommand{\cvfooter}[2]{%
+  \vfill
+  \noindent{\color{CVBlueRule}\rule{\textwidth}{0.45pt}}\par
+  \vspace{2pt}
+  \noindent{\footnotesize\color{CVMuted}#1\hfill #2}\par
+}
+
+\newcommand{\cvsection}[1]{%
+  \vspace{4mm}%
+  \noindent\begin{tabularx}{\textwidth}{@{}l X@{}}
+    {\bfseries\large\color{CVNavy}\MakeUppercase{#1}} &
+    \raisebox{0.58ex}{\color{CVBlue}\rule{\linewidth}{0.75pt}}
+  \end{tabularx}
+  \vspace{1.5mm}%
+}
+
+\newenvironment{cvparagraph}{%
+  \begin{tcolorbox}[
+    width=\textwidth,
+    colback=PortfolioSoft,
+    colframe=PortfolioSoft,
+    boxrule=0pt,
+    left=2.8mm,
+    right=2.8mm,
+    top=2mm,
+    bottom=2mm,
+    boxsep=0pt,
+    before skip=0pt,
+    after skip=0pt
+  ]\small\RaggedRight
+}{%
+  \end{tcolorbox}
+}
+
+% Compatibility helpers for older fragment files.
+\newenvironment{cvitems}{\begin{itemize}}{\end{itemize}}
+\newenvironment{cventries}{}{}
+\NewDocumentCommand{\cventry}{m m m m +m}{%
+  \vspace{1mm}
+  \noindent\begin{tabularx}{\textwidth}{@{}X r@{}}
+    \textbf{#2} & \cvdate{#4}\\
+    \muted{\emph{#1}} & \muted{#3}
+  \end{tabularx}
+  \vspace{-2mm}
+  #5
+  \vspace{1.4mm}
+}
+\newenvironment{cvskills}{}{}
+\NewDocumentCommand{\cvskill}{m m}{%
+  \noindent\begin{tabularx}{\textwidth}{@{}>{\bfseries\color{CVBlue}}p{3.0cm}X@{}}
+    #1 & #2
+  \end{tabularx}\vspace{1mm}
+}
+\newenvironment{cvhonors}{}{}
+\NewDocumentCommand{\cvhonor}{m m m m}{%
+  \noindent\begin{tabularx}{\textwidth}{@{}X r@{}}
+    \textbf{#1} --- \muted{#2, #3} & \cvdate{#4}
+  \end{tabularx}\vspace{0.8mm}
+}
