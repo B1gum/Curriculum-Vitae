@@ -1,72 +1,17 @@
 \projectentry
   {Tungsten}
   {Open-source scientific-computing plugin for Neovim}
-  {Personal project}
+  {Personal software project}
   {2025 -- Present}
-  {\portfoliotag{Lua} \portfoliotag{Neovim} \portfoliotag{\LaTeX} \portfoliotag{Wolfram Engine} \portfoliotag{Python}}
+  {\portfoliotag{Lua} \portfoliotag{Neovim} \portfoliotag{\LaTeX} \portfoliotag{Wolfram Engine} \portfoliotag{Python} \portfoliotag{Scientific Computing}}
   {\tungstenfigure}
   {Tungsten brings a computational-notebook workflow into ordinary \LaTeX\ editing inside Neovim. Instead of switching between editor, CAS, and scratch files, mathematical expressions can be interpreted and evaluated in place, with results rendered directly in the buffer.
 
   \begin{projectbullets}
-    \item Designed the plugin as a small system of interacting parts: parser, translation layer, computation backend, asynchronous execution, and inline result rendering.
-    \item Chose standard \LaTeX\ as the user-facing input format so the workflow stays close to normal scientific writing and my own workflow.
-    \item Maintained the project through releases, dependency management, documentation, and issue-driven iteration.
-  \end{projectbullets}}
-
-\projectseparator
-
-\projectentry
-  {Audio-Reactive TV Backlight}
-  {Analog LED-control circuit driven by a TV audio signal}
-  {Electromagnetism capstone project}
-  {BSc project, 2026}
-  {\portfoliotag{Analog electronics} \portfoliotag{Circuitry} \portfoliotag{Falstad} \portfoliotag{KiCad}}
-  {\leddriverfigure}
-  {This project involved designing an analog circuit that converts a TV audio signal into brightness control for a standard LED strip. The circuit takes stereo RCA/AUX audio, converts it to mono, removes DC offset, amplifies the signal, smooths it, and uses it to regulate LED current.
-
-  \begin{projectbullets}
-    \item Structured the circuit into clear sub-stages: stereo-to-mono input, AC coupling, LM358 amplification, low-pass filtering, and MOSFET-based LED current control.
-    \item Added adjustable gain to compensate for different audio-source levels, with the non-inverting amplifier designed for approximately \(3.1\)--\(24.4\) gain.
-    \item Used a low-pass filter with an effective cutoff around \(148\,\mathrm{Hz}\) to reduce excessive flicker and produce smoother light response.
-    \item Simulated and tuned the design in Falstad before physical testing and presentation.
-  \end{projectbullets}}
-
-\projectseparator
-
-\clearpage
-
-\projectentry
-  {Game of Throws Launch Mechanism}
-  {Spring-powered mechanical launcher for squash-ball competition}
-  {Design \& Construction course project}
-  {BSc project, 2024}
-  {\portfoliotag{Mechanism design} \portfoliotag{SolidWorks} \portfoliotag{3D printing} \portfoliotag{Laser cutting} \portfoliotag{Testing}}
-  {\catapultfigure}
-  {This project involved designing and building a spring-powered mechanism for launching a squash ball toward a target plate in the Game of Throws competition. The final design evolved from early catapult and crossbow concepts into an acrylic-and-PLA launcher using a pulley system to increase the ball's acceleration path.
-
-  \begin{projectbullets}
-    \item Compared several concepts using a weighted PV evaluation, with focus on fast reloading, sufficient range, adjustability, robustness, and realistic production.
-    \item Built and tested multiple prototypes, improving friction, pulley strength, wire routing, locking reliability, and spring utilisation between iterations.
-    \item Produced the final mechanism using laser-cut acrylic plates, 3D-printed PLA components, pulleys, wire, a spring, and a mechanical trigger.
-    \item Achieved approximately 3 m range and placed 3rd in qualification, while identifying friction and force losses as the main limitations.
-  \end{projectbullets}}
-
-\projectseparator
-
-
-\projectentry
-  {DC Motor Flap Control System}
-  {Arduino-controlled position system for an aircraft wing flap model}
-  {Control systems project}
-  {BSc project}
-  {\portfoliotag{DC motor} \portfoliotag{Encoder feedback} \portfoliotag{System identification} \portfoliotag{Bode plots} \portfoliotag{PID control}}
-  {\flapfigure}
-  {This project models and controls the position of a wing flap actuated by a DC motor. The goal is accurate and predictable angle control, linking the physical electromechanical system to a control-oriented mathematical model.
-
-  \begin{projectbullets}
-    \item Modelled the plant with motor dynamics, linkage effects, feedback sensing, and practical limits such as saturation and travel constraints.
-    \item Connected measured behaviour with transfer-function analysis in MATLAB, including step-response and frequency-response reasoning.
-    \item Integrated Arduino control and encoder feedback to support controller tuning and closed-loop validation.
+    \item Designed and implemented a general-purpose LaTeX math parser covering algebra and arithmetic, calculus, linear algebra, differential equations, plotting, numerics, and units.
+    \item Broke a large, under-defined parsing problem into manageable components, gradually building support for real mathematical notation such as systems of equations, matrices, vectors, nested expressions, Greek symbols, assumptions, units, and plotting commands.
+    \item Integrated the parser into a Neovim workflow with inline results, user-facing commands, and backend support for Wolfram Engine and Python.
+    \item Maintained the project through releases, documentation, dependency management, issue-driven improvements, and feedback from external users; currently has 20 GitHub stars, 36 user-facing commands, and 180 unique cloners in the last 14 days.
   \end{projectbullets}}
 
 \projectseparator
@@ -76,14 +21,69 @@
   {Analog audio circuit design with gain, clipping, and tone-shaping stages}
   {Personal electronics project}
   {2025 -- Present}
-  {\portfoliotag{KiCad} \portfoliotag{ngspice} \portfoliotag{Op-amp gain stages} \portfoliotag{Clipping diodes} \portfoliotag{Tone control}}
+  {\portfoliotag{Analog electronics} \portfoliotag{KiCad} \portfoliotag{ngspice} \portfoliotag{Tone shaping} \portfoliotag{Oscilloscope testing}}
   {\pedalfigure}
-  {This project explores how analog circuit choices become audible design choices in a guitar pedal. The work covers gain structure, nonlinear clipping, filtering, virtual-ground generation, and practical layout for a buildable circuit.
+  {This project explores the design of a highly customizable distortion pedal from the ground up. Rather than modifying an existing circuit, the design is built as a complete analog signal chain with power conditioning, buffering, gain staging, clipping, clean blend, EQ, tone shaping, and output buffering.
 
   \begin{projectbullets}
-    \item Broke the design into functional subsystems: buffering, gain stages, clipping network, frequency shaping, and output drive.
-    \item Used KiCad and ngspice to inspect operating points, transient behaviour, and tone-shaping before moving to hardware.
-    \item Considered buildability throughout, including grounding, test points, wiring, and debugging access on perfboard or vero.
+    \item Designed an almost 100-component analog circuit in KiCad, including power supply section, input buffer, two gain stages, voice filtering, selectable clipping, clean blend, tilt control, volume control, and output buffer.
+    \item Built the clipping section around six selectable diode options, with switching that allows either symmetrical clipping of both waveform halves or clipping of only one half.
+    \item Used ngspice to inspect operating points, transient response, and frequency response before moving the circuit to breadboard testing.
+    \item Breadboarded and tested sections of the circuit using measurements and oscilloscope inspection, with perfboard layout planning and enclosure CAD as the next steps.
   \end{projectbullets}}
 
-  \projectseparator
+\projectseparator
+
+\clearpage
+
+\projectentry
+  {DC Motor Flap Control System}
+  {Arduino-based PID position control for an aircraft wing flap model}
+  {Control systems project}
+  {BSc project, Ongoing}
+  {\portfoliotag{PID control} \portfoliotag{Arduino} \portfoliotag{MATLAB} \portfoliotag{Simulink} \portfoliotag{System identification}}
+  {\flapfigure}
+  {This project develops a closed-loop control system for a 3D-printed aircraft wing flap model driven by a geared DC motor. The angular position of the motor shaft corresponds to the flap angle, and the objective is to achieve reliable position control with strong disturbance rejection, fast settling, and limited overshoot.
+
+  \begin{projectbullets}
+    \item Building a physical test setup using a 6–12 V DC motor driven from a 9 V supply, an integrated encoder wired to an Arduino Uno R3 WiFi, and a 3D-printed airfoil/flap model.
+    \item Identifying an experimental transfer function from measured motor and encoder data to support controller design and validation.
+    \item Designing and tuning a custom PID controller using root locus, Bode plots, gain/phase margins, and time-domain response analysis.
+    \item Combining Arduino/C++, MATLAB, Simulink, Control System Toolbox, CAD, and 3D printing to connect modelling, implementation, and physical testing.
+  \end{projectbullets}}
+
+\projectseparator
+
+\projectentry
+  {Audio-Reactive TV Backlight}
+  {Analog LED-control circuit driven by a TV audio signal}
+  {Electromagnetism capstone project}
+  {BSc project, 2026}
+  {\portfoliotag{Analog electronics} \portfoliotag{Circuitry} \portfoliotag{Signal conditioning} \portfoliotag{Falstad} \portfoliotag{KiCad}}
+  {\leddriverfigure}
+  {This project involved designing, simulating, and building an analog circuit that converts a TV audio signal into a smooth LED-strip brightness response. The goal was not just to detect audio level, but to create a visually pleasing light response that followed the general energy and mood of the soundscape.
+
+  \begin{projectbullets}
+    \item Designed the full analog signal chain: TV audio output through SCART/RCA adapter, mono summing, AC coupling, non-inverting amplification and rectification, low-pass smoothing, current sink, and LED-strip output.
+    \item Used Falstad simulations to test and tune the circuit before soldering the final version on perfboard.
+    \item Calculated and adjusted gain and filtering behaviour to convert the audio into an envelope suitable for LED brightness control.
+    \item Tuned the response through trial and error, balancing smoothness and responsiveness to avoid excessive flicker while still matching the perceived vibe of the audio.
+  \end{projectbullets}}
+
+\projectseparator
+
+\projectentry
+  {Game of Throws Launch Mechanism}
+  {Spring-powered mechanical launcher for squash-ball competition}
+  {Design \& Construction course project}
+  {BSc project, 2024}
+  {\portfoliotag{Mechanism design} \portfoliotag{SolidWorks} \portfoliotag{3D printing} \portfoliotag{Laser cutting} \portfoliotag{Testing}}
+  {\catapultfigure}
+  {This five-person course project involved designing and building a spring-powered mechanism for launching squash balls toward a target plate with scoring holes. The mechanism had to fit within strict packaging, material, loading-time, and adjustability constraints while delivering enough ball speed to be competitive.
+
+  \begin{projectbullets}
+    \item Worked within constraints including a restricted packaging volume, limited 3D-print volume, restricted materials, spring-powered launch energy, horizontal and vertical adjustment, and a maximum 4-second loading requirement.
+    \item Contributed to the documentation and engineering reasoning behind the design, including requirements, concept evaluation, prototype testing, and design iteration.
+    \item Helped communicate how testing revealed excessive friction and mechanical losses as key limitations in the first concepts.
+    \item Documented the resulting pulley-based redesign, which aimed to extract more useful launch force from the available spring energy while preserving buildability and repeatable operation.
+  \end{projectbullets}}
